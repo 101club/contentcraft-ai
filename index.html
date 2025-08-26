@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContentCraft AI - Your Passive Income Content Studio</title>
+    <meta name="description" content="AI驅動的多語言內容創作平台，建立永久被動收入，50+語言支持">
+    <meta name="keywords" content="AI內容創作,被動收入,多語言,自動化,SEO優化">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/">
+    <meta property="og:title" content="ContentCraft AI - AI驅動被動收入平台">
+    <meta property="og:description" content="全球首個AI多語言內容創作平台，自動生成50+語言內容，建立永久被動收入">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="ContentCraft AI - AI驅動被動收入平台">
+    <meta property="twitter:description" content="AI自動生成多語言內容，建立全球被動收入">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52, #ff4757);
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(255,107,107,0.4);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(255,107,107,0.6);
+            background: linear-gradient(45deg, #ff5252, #d32f2f, #ff1744);
+        }
+        
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+            animation: countUp 2s ease-out;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 80px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.4);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin: 80px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+        
+        .demo-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .demo-controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .demo-select {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .demo-button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            border: none;
+            padding: 12px 30px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(76,175,80,0.4);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(76,175,80,0.6);
+        }
+        
+        .output-area {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            min-height: 200px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .pricing {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 80px 40px;
+            text-align: center;
+            margin: 80px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .pricing h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .pricing-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+        
+        .pricing-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .pricing-tier {
+            background: rgba(255,255,255,0.2);
+            padding: 50px 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .pricing-tier.popular {
+            transform: scale(1.05);
+            border: 2px solid #ff6b6b;
+            background: rgba(255,107,107,0.1);
+        }
+        
+        .pricing-tier.popular::before {
+            content: '🔥 最受歡迎';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .pricing-tier:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .tier-name {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .price-period {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+        
+        .tier-features {
+            list-style: none;
+            text-align: left;
+            margin: 30px 0;
+        }
+        
+        .tier-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
+        }
+        
+        .tier-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .payment-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+        
+        .payment-section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .payment-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .payment-link {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #333;
+            text-decoration: none;
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .payment-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 80px;
+        }
+        
+        .success-stories {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 60px 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .success-stories h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 4px 20px rgba(255,255,255,0.3); }
+            100% { text-shadow: 0 4px 30px rgba(255,255,255,0.6); }
+        }
+        
+        @keyframes countUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .payment-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>ContentCraft AI</h1>
+                <p class="hero-subtitle">全球首個AI驅動的多語言內容創作被動收入平台</p>
+                <p class="hero-description">Generate Premium Content in 50+ Languages • Build Passive Income • Scale Globally</p>
+                <button class="cta-button" onclick="startFreeTrial()">🚀 開始14天免費試用</button>
+            </div>
+        </header>
+
+        <div class="stats-banner">
+            <div class="stat-item">
+                <div class="stat-number" id="users-count">50,000+</div>
+                <div class="stat-label">全球用戶</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="content-count">2M+</div>
+                <div class="stat-label">AI生成內容</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="languages-count">50+</div>
+                <div class="stat-label">支持語言</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="revenue-count">$500K+</div>
+                <div class="stat-label">用戶總收益</div>
+            </div>
+        </div>
+
+        <section class="features">
+            <div class="feature-card">
+                <span class="feature-icon">🤖</span>
+                <h3>AI多語言內容生成</h3>
+                <p>一鍵生成50+種語言的高質量內容，包括文章、視頻腳本、社交媒體內容、電子書等。AI分析全球趨勢，確保內容始終緊跟市場脈搏，每天自動創建500+篇優質內容。</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">💰</span>
+                <h3>自動化收益系統</h3>
+                <p>集成廣告投放、會員訂閱、聯盟行銷、內容授權等多重收益模式。智能優化廣告位置、分析用戶行為、自動調整定價策略，24/7自動運行，讓你睡覺時也在賺錢。</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🌍</span>
+                <h3>全球市場覆蓋</h3>
+                <p>自動分析全球趨勢熱點，針對不同國家和地區生成本地化內容。從歐美發達市場到新興經濟體，全面覆蓋藍海市場，建立不可撼動的先發優勢。</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">📈</span>
+                <h3>智能SEO優化</h3>
+                <p>AI自動優化關鍵詞密度、標題結構、元描述、內部鏈接等SEO要素。結合語義分析和用戶搜索意圖，確保內容在Google等搜索引擎排名靠前，持續獲得免費流量。</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🔄</span>
+                <h3>病毒式傳播機制</h3>
+                <p>內建社交分享獎勵系統、多級推薦返利機制、UGC內容激勵計劃等。利用人性化的激勵設計，讓用戶主動傳播你的內容，實現指數級用戶增長和收益擴張。</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🛡️</span>
+                <h3>護城河建設</h3>
+                <p>獨家AI模型訓練、專利內容算法、海量用戶數據、強大品牌效應形成多重護城河。一旦建立領先優勢，後來者將面臨巨大的追趕成本，讓你的領先地位更加穩固。</p>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>🎯 AI內容生成器演示</h2>
+            <p>體驗AI的強大能力，一鍵生成多語言高質量內容：</p>
+            
+            <div class="demo-controls">
+                <select class="demo-select" id="content-type">
+                    <option value="blog">Blog文章</option>
+                    <option value="youtube">YouTube腳本</option>
+                    <option value="ebook">電子書章節</option>
+                    <option value="social">社交媒體內容</option>
+                    <option value="product">產品描述</option>
+                    <option value="email">郵件營銷</option>
+                </select>
+                
+                <select class="demo-select" id="target-language">
+                    <option value="en">English 英語</option>
+                    <option value="es">Español 西班牙語</option>
+                    <option value="fr">Français 法語</option>
+                    <option value="de">Deutsch 德語</option>
+                    <option value="ja">日本語 日語</option>
+                    <option value="ko">한국어 韓語</option>
+                    <option value="ar">العربية 阿拉伯語</option>
+                    <option value="pt">Português 葡萄牙語</option>
+                </select>
+                
+                <select class="demo-select" id="topic">
+                    <option value="tech">科技趨勢</option>
+                    <option value="health">健康生活</option>
+                    <option value="finance">投資理財</option>
+                    <option value="travel">旅遊攻略</option>
+                    <option value="food">美食文化</option>
+                    <option value="business">商業創業</option>
+                </select>
+                
+                <button class="demo-button" onclick="generateDemoContent()">🚀 立即生成</button>
+            </div>
+            
+            <div class="output-area" id="demo-output">
+                <p style="color: #4CAF50; font-size: 1.1rem;">👆 選擇內容類型、目標語言和主題，然後點擊"立即生成"按鈕</p>
+                <p style="opacity: 0.7; margin-top: 15px;">AI將根據你的選擇生成高質量、SEO優化的內容...</p>
+            </div>
+        </section>
+
+        <section class="success-stories">
+            <h2>💫 用戶成功案例</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <h4>📈 Sarah M. - 美國</h4>
+                    <p>"使用ContentCraft AI三個月，我的被動收入從$0增長到每月$8,500！AI生成的多語言內容幫我打開了全球市場，現在我的網站每天有來自30+個國家的訪客。"</p>
+                    <div style="margin-top: 15px; color: #4CAF50; font-weight: bold;">月收入: $8,500+ 💰</div>
+                </div>
+                
+                <div class="testimonial">
+                    <h4>🚀 Marcus L. - 德國</h4>
+                    <p>"作為完全的技術小白，我沒想到能這麼簡單就建立起自己的內容帝國。AI自動生成的內容質量超乎想像，SEO效果也很棒，現在我每天躺著就有$200+入賬。"</p>
+                    <div style="margin-top: 15px; color: #4CAF50; font-weight: bold;">日收入: $200+ 💸</div>
+                </div>
+                
+                <div class="testimonial">
+                    <h4>🌟 Elena R. - 西班牙</h4>
+                    <p>"最讓我驚喜的是病毒式傳播功能！我的內容在社交媒體上瘋傳，用戶主動幫我推廣，短短兩個月就獲得了10萬+粉絲和穩定的廣告收入。"</p>
+                    <div style="margin-top: 15px; color: #4CAF50; font-weight: bold;">粉絲增長: 100K+ 📱</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <h2>💎 定價方案</h2>
+            <p class="pricing-subtitle">選擇最適合你的方案，開始建立被動收入帝國</p>
+            
+            <div class="pricing-tiers">
+                <div class="pricing-tier">
+                    <div class="tier-name">🌱 新手版</div>
+                    <div class="price">$29<span class="price-period">/月</span></div>
+                    <ul class="tier-features">
+                        <li>✅ 每日100篇AI內容生成</li>
+                        <li>✅ 10種語言支持</li>
+                        <li>✅ 基礎SEO優化</li>
+                        <li>✅ 廣告收益分成</li>
+                        <li>✅ 社交媒體自動發布</li>
+                        <li>✅ 7x24客戶支持</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-tier popular">
+                    <div class="tier-name">🚀 專業版</div>
+                    <div class="price">$97<span class="price-period">/月</span></div>
+                    <ul class="tier-features">
+                        <li>✅ 每日500篇AI內容生成</li>
+                        <li>✅ 30種語言支持</li>
+                        <li>✅ 高級SEO + 社交優化</li>
+                        <li>✅ 多重收益模式整合</li>
+                        <li>✅ 病毒式傳播系統</li>
+                        <li>✅ 實時數據分析</li>
+                        <li>✅ 優先客戶支持</li>
+                        <li>✅ 定制內容模板</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-tier">
+                    <div class="tier-name">👑 企業版</div>
+                    <div class="price">$297<span class="price-period">/月</span></div>
+                    <ul class="tier-features">
+                        <li>✅ 無限AI內容生成</li>
+                        <li>✅ 50+種語言支持</li>
+                        <li>✅ 定制AI模型訓練</li>
+                        <li>✅ 白標解決方案</li>
+                        <li>✅ API接口開放</li>
+                        <li>✅ 專屬AI算法</li>
+                        <li>✅ 1對1專屬顧問</li>
+                        <li>✅ 獨家護城河功能</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment-section">
+            <h3>💳 開始你的被動收入之旅</h3>
+            <p>選擇你偏好的支付方式，立即啟動AI自動賺錢系統：</p>
+            <div class="payment-links">
+                <a href="https://ko-fi.com/james25430" class="payment-link" target="_blank">
+                    ☕ Ko-fi 一次性支付
+                </a>
+                <a href="https://paypal.me/101club" class="payment-link" target="_blank">
+                    💙 PayPal 快速支付
+                </a>
+            </div>
+            <p style="margin-top: 25px; opacity: 0.8; font-size: 0.95rem;">
+                💡 付款後請將交易ID發送至郵箱，我們將在24小時內為你開通全功能訪問權限
+            </p>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 ContentCraft AI. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">
+                🌟 全球首創AI驅動被動收入平台 | 🚀 開啟你的財富自由之路
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // 統計數據動態更新
+        function updateStats() {
+            const stats = [
+                { id: 'users-count', base: 50000, increment: () => Math.floor(Math.random() * 10) + 1 },
+                { id: 'content-count', base: 2000000, increment: () => Math.floor(Math.random() * 50) + 10 },
+                { id: 'revenue-count', base: 500000, increment: () => Math.floor(Math.random() * 100) + 20 }
+            ];
+
+            stats.forEach(stat => {
+                const element = document.getElementById(stat.id);
+                if (element) {
+                    const currentValue = stat.base + Math.floor(Math.random() * 10000);
+                    if (stat.id === 'revenue-count') {
+                        element.textContent = ' + currentValue.toLocaleString() + '+';
+                    } else {
+                        element.textContent = currentValue.toLocaleString() + '+';
+                    }
+                    
+                    // 添加增長動畫效果
+                    element.style.transform = 'scale(1.1)';
+                    element.style.color = '#4CAF50';
+                    setTimeout(() => {
+                        element.style.transform = 'scale(1)';
+                    }, 300);
+                }
+            });
+        }
+
+        // 免費試用功能
+        function startFreeTrial() {
+            // 創建模擬的註冊成功效果
+            const button = document.querySelector('.cta-button');
+            const originalText = button.textContent;
+            
+            button.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+            button.textContent = '🎉 試用已激活！';
+            
+            // 顯示詳細的激活信息
+            setTimeout(() => {
+                alert(`🎉 恭喜！你的14天免費試用已成功激活！
+
+✅ AI內容生成器已解鎖
+✅ 10種語言支持已啟用  
+✅ SEO優化工具已激活
+✅ 收益追蹤系統已開啟
+
+📧 詳細使用指南已發送至你的郵箱
+💰 預計24小時內開始產生收益
+
+立即開始創建你的第一批內容吧！`);
+                
+                // 恢復按鈕狀態
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a52, #ff4757)';
+            }, 2000);
+
+            // 模擬統計數據更新
+            updateStats();
+        }
+
+        // AI內容生成演示
+        function generateDemoContent() {
+            const contentType = document.getElementById('content-type').value;
+            const language = document.getElementById('target-language').value;
+            const topic = document.getElementById('topic').value;
+            const output = document.getElementById('demo-output');
+            
+            // 顯示生成中狀態
+            output.innerHTML = `
+                <div style="text-align: center; padding: 30px;">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">🤖</div>
+                    <p style="color: #4CAF50; font-size: 1.2rem; margin-bottom: 10px;">AI正在生成內容...</p>
+                    <p style="opacity: 0.7;">分析市場趨勢 → 優化關鍵詞 → 創建高質量內容</p>
+                    <div style="background: rgba(76,175,80,0.2); height: 6px; border-radius: 3px; margin: 20px 0; overflow: hidden;">
+                        <div style="background: #4CAF50; height: 100%; width: 0%; animation: loading 3s ease-in-out;"></div>
+                    </div>
+                </div>
+                <style>
+                    @keyframes loading {
+                        0% { width: 0%; }
+                        50% { width: 70%; }
+                        100% { width: 100%; }
+                    }
+                </style>
+            `;
+
+            // 模擬內容生成
+            setTimeout(() => {
+                const contentTypes = {
+                    'blog': '部落格文章',
+                    'youtube': 'YouTube腳本', 
+                    'ebook': '電子書章節',
+                    'social': '社交媒體內容',
+                    'product': '產品描述',
+                    'email': '郵件營銷'
+                };
+
+                const languages = {
+                    'en': 'English',
+                    'es': 'Español', 
+                    'fr': 'Français',
+                    'de': 'Deutsch',
+                    'ja': '日本語',
+                    'ko': '한국어',
+                    'ar': 'العربية',
+                    'pt': 'Português'
+                };
+
+                const topics = {
+                    'tech': '科技趨勢',
+                    'health': '健康生活',
+                    'finance': '投資理財', 
+                    'travel': '旅遊攻略',
+                    'food': '美食文化',
+                    'business': '商業創業'
+                };
+
+                const sampleContent = generateSampleContent(contentType, topic, language);
+                
+                output.innerHTML = `
+                    <div style="border-left: 4px solid #4CAF50; padding-left: 20px; margin-bottom: 20px;">
+                        <h4 style="color: #4CAF50; margin-bottom: 10px;">✅ 內容生成完成！</h4>
+                        <p><strong>類型:</strong> ${contentTypes[contentType]}</p>
+                        <p><strong>語言:</strong> ${languages[language]}</p>
+                        <p><strong>主題:</strong> ${topics[topic]}</p>
+                        <p><strong>生成時間:</strong> ${new Date().toLocaleTimeString()}</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);">
+                        <h5 style="color: #fff; margin-bottom: 15px;">📝 生成的內容預覽:</h5>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; font-family: monospace; line-height: 1.6;">
+                            ${sampleContent}
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(76,175,80,0.1); border-radius: 8px; border: 1px solid rgba(76,175,80,0.3);">
+                        <p style="color: #4CAF50; font-weight: bold; margin-bottom: 8px;">💰 預計收益影響:</p>
+                        <p>• 預計日流量增長: +150-300 UV</p>
+                        <p>• SEO排名提升: 預計2-3個關鍵詞進入前10</p>
+                        <p>• 廣告收益預估: $25-60/天</p>
+                        <p>• 社交分享潛力: 預計50-100次分享</p>
+                    </div>
+                `;
+                
+                // 更新統計數據
+                updateStats();
+            }, 3000);
+        }
+
+        // 生成示例內容的函數
+        function generateSampleContent(type, topic, language) {
+            const samples = {
+                'blog': {
+                    'tech': `# The Future of AI Technology in 2025
+
+Artificial Intelligence continues to revolutionize industries worldwide. From automated content creation to predictive analytics, AI tools are becoming indispensable for businesses looking to stay competitive.
+
+## Key Trends to Watch:
+1. **Generative AI**: Creating content at unprecedented scale
+2. **AI Integration**: Seamless integration with existing workflows  
+3. **Personalization**: Hyper-targeted user experiences
+
+*This AI-generated article is optimized for SEO with target keywords and engaging content structure.*`,
+                    'health': `# 5 Science-Backed Ways to Boost Your Immunity
+
+Your immune system is your body's natural defense mechanism. Here are proven strategies to strengthen it naturally...
+
+## Natural Immunity Boosters:
+• Regular exercise (30 minutes daily)
+• Quality sleep (7-9 hours nightly)  
+• Balanced nutrition with vitamins C & D
+• Stress management techniques
+• Proper hydration
+
+*Content automatically optimized for health & wellness keywords with high search volume.*`
+                },
+                'youtube': {
+                    'business': `🎬 YOUTUBE SCRIPT: "From Zero to $10K Monthly - My Passive Income Journey"
+
+[HOOK - First 15 seconds]
+"What if I told you that this simple AI tool helped me go from $0 to $10,000 in monthly passive income? Stay tuned because I'm sharing everything..."
+
+[INTRO - 30 seconds]
+Welcome back entrepreneurs! Today's video is special because I'm revealing the exact system that transformed my financial life...
+
+[MAIN CONTENT - 8 minutes]
+• The mindset shift that changed everything
+• The AI tools I use daily (with live demos)
+• My exact monetization strategy
+• Common mistakes to avoid
+
+*Script includes engagement hooks, call-to-actions, and YouTube SEO optimization*`
+                }
+            };
+
+            return samples[type]?.[topic] || `✨ AI has generated premium ${type} content about ${topic} in ${language}!
+
+This is a sample of the high-quality, SEO-optimized content that ContentCraft AI produces automatically. The actual system would generate:
+
+• Fully researched articles with proper structure
+• Keyword-optimized headlines and meta descriptions  
+• Native-level content in your target language
+• Engaging hooks and call-to-actions
+• Social media ready snippets
+• Complete monetization elements
+
+📈 Each piece of content is designed to drive traffic, engage audiences, and generate revenue through multiple channels.`;
+        }
+
+        // 自動更新統計數據
+        setInterval(updateStats, 45000); // 每45秒更新一次
+
+        // 頁面加載時的動畫效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 為特色卡片添加載入動畫
+            const cards = document.querySelectorAll('.feature-card, .pricing-tier');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // 初始統計數據更新
+            updateStats();
+        });
+
+        // 滾動效果
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // 添加一些互動效果
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 25px 50px rgba(0,0,0,0.3)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>Add ContentCraft AI website
